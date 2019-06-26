@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace task7.cs
 {
-    class Program
+    public class Program
     {
         static double Input(string sentence, double minBorder = double.MinValue, double maxBorder = double.MaxValue)
         {
@@ -40,13 +40,11 @@ namespace task7.cs
             while (!ok);
             return result;
         }
-        static bool NextSet(int[] a, int n, int m)
+        public static bool NextSet(int[] a, int n, int m)
         {
             int j = m - 1; // Инициализация переменной j (индекс последнего элемента)
             while (j >= 0 && a[j] == n ) j--;
             if (j < 0) return false;
-            if (a[j] >= n)
-                j--;
             a[j]++;
             if (j == m - 1) return true;
             for (int k = j + 1; k < m; k++)
@@ -65,12 +63,14 @@ namespace task7.cs
         }
         static void Main(string[] args)
         {
+            Console.WriteLine("Задача №7 (19)\n" +
+                "Сгенерировать все размещения из N элементов по K с повторениями и выписать их в лексикографическом порядке. \n");
             int n = IntInput("N = ", 1);
             int m;
             
             do
             {
-                m = IntInput("M = ");
+                m = IntInput("M = ", 1);
                 if (m > n)
                 {
                     Console.WriteLine("N должно быть больше или равно M");
@@ -93,29 +93,7 @@ namespace task7.cs
             } while (NextSet(secodnaryArray, n, m));
 
             Console.ReadKey();
-            /*
-             * 1 2 5 7
-             * 
-             * 1 1 1 
-             * 1 1 2
-             * 1 1 5
-             * 1 1 7
-             * 1 2 2
-             * 1 2 5
-             * 1 2 7
-             * 1 5 5
-             * 1 5 7
-             * 2 2 2
-             * 2 2 5
-             * 2 2 7
-             * 2 5 5
-             * 2 5 7
-             * 2 7 7
-             * 5 5 5
-             * 5 5 7
-             * 5 7 7
-             * 7 7 7
-             */
+
 
         }
     }
